@@ -10,11 +10,11 @@ import com.linkcreativi.dierre.loops.model.NodeElement;
  */
 public class BadWay {
 
-	public static boolean findLoopKeepingVisitedLinks(NodeElement node) {
+	public static boolean findLoopKeepingVisitedNode(NodeElement node) {
 
 		if (node == null)
 			return false;
-		
+
 		List<NodeElement> visitedNodes = new LinkedList<NodeElement>();
 
 		NodeElement currentNode = node;
@@ -24,6 +24,23 @@ public class BadWay {
 			if (visitedNodes.contains(currentNode))
 				return true;
 			visitedNodes.add(currentNode);
+		}
+
+		return false;
+	}
+
+	public static boolean findLoopSettingVisitedNode(NodeElement node) {
+
+		if (node == null)
+			return false;
+
+		NodeElement currentNode = node;
+		currentNode.setVisited(true);
+
+		while ((currentNode = currentNode.getNext()) != null) {
+			if (currentNode.isVisited())
+				return true;
+			currentNode.setVisited(true);
 		}
 
 		return false;

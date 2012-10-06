@@ -62,16 +62,22 @@ public class TestBadWayLoopNotExpected {
 
 	}
 
-	
 	public TestBadWayLoopNotExpected(NodeElement node) {
 		this.node = node;
 	}
 
 	@Test
+	public void testWithKeepingVisitedNodes() {
+		boolean isLoop = false;
+		isLoop = BadWay.findLoopKeepingVisitedNode(node);
+		assertFalse(isLoop);
+	}
+	
+	@Test
 	public void testWithVisitedNodes() {
 		boolean isLoop = false;
-		isLoop = BadWay.findLoopKeepingVisitedLinks(node);
-		assertFalse(isLoop);
+		isLoop = BadWay.findLoopSettingVisitedNode(node);
+		assertFalse(isLoop);	
 	}
 
 }
