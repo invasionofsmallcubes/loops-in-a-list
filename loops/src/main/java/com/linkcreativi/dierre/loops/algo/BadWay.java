@@ -1,4 +1,4 @@
-package com.linkcreativi.dierre.loops.bad;
+package com.linkcreativi.dierre.loops.algo;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -44,6 +44,29 @@ public class BadWay {
 		}
 
 		return false;
+	}
+
+	public static boolean findLoopReverseList(NodeElement node) {
+
+		if (node == null)
+			return false;
+
+		if (node.getNext() == null)
+			return false;
+
+		NodeElement previousNode = null;
+		NodeElement currentNode = null;
+		NodeElement nextNode = null;
+
+		currentNode = node;
+		
+		while(currentNode != null) {
+			nextNode = currentNode.getNext();
+			currentNode.setNext(previousNode);
+			previousNode = currentNode;
+			currentNode = nextNode;
+		}
+		return ( previousNode.equals(node));
 	}
 
 }
