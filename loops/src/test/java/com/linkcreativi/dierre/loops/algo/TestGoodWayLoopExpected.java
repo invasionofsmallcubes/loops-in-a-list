@@ -16,18 +16,22 @@ public class TestGoodWayLoopExpected {
 
 	private NodeElement node;
 
+	public TestGoodWayLoopExpected(NodeElement node) {
+		this.node = node;
+	}
+
 	@Parameters
 	public static Collection<Object[]> getElements() {
 		return DataProvider.getElementsForExpectedLoop();
 	}
-	
+
 	@Test
 	public void testFindLoopCatchLarger() {
 		boolean isLoop = false;
 		isLoop = GoodWay.findLoopCatchLarger(node);
 		assertTrue(isLoop);
 	}
-	
+
 	@Test
 	public void testFindLoopTurtleAndHare() {
 		boolean isLoop = false;

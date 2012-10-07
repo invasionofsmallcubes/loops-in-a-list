@@ -6,6 +6,9 @@ public class GoodWay {
 
 	public static boolean findLoopCatchLarger(NodeElement node) {
 
+		if (node == null)
+			return false;
+
 		NodeElement currentNode = node;
 		NodeElement checkNode = null;
 
@@ -26,11 +29,15 @@ public class GoodWay {
 	}
 
 	public static boolean findLoopTurtleAndHare(NodeElement node) {
+
+		if (node == null)
+			return false;
+
 		NodeElement turtle = node;
 		NodeElement hare = node;
-		
+
 		while (true) {
-			
+
 			if (hare == null)
 				return false;
 			hare = hare.getNext();
@@ -40,7 +47,7 @@ public class GoodWay {
 			hare = hare.getNext();
 
 			turtle = turtle.getNext();
-			if (hare.equals(hare))
+			if (turtle.equals(hare))
 				return true;
 		}
 	}
